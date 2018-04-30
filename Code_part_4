@@ -1,0 +1,129 @@
+// 2DimensionalArrayExp1  
+// This program is part of Project 2
+// As part of your assignment on this program, you will turn the process through the array
+// into a function and add a third dimension
+
+
+#include <iostream>
+#include <cstdlib>	// Needed for rand and srand
+#include <ctime>	// Needed for the time function
+#include <math.h>
+#include <list>
+using namespace std;
+
+void processThroughArray();
+void searchArray();
+int myArray[10][10][10] = { 0 };
+int main()
+{
+	// estabish array and set all values to 0
+
+
+	// establish x and y position markers
+	int x = 0;
+	int y = 0;
+	int z = 0;
+
+	// establish input for x and y from the user
+	int xInput = 0;
+	int yInput = 0;
+	int zInput = 0;
+	int xInput2 = 0;
+	int yInput2 = 0;
+	int zInput2 = 0;
+
+	// variable for value entered
+	int inputValue = 0;
+	int inputValue2 = 0;
+
+	// Get the user's value and coordinate
+	cout << "\nPlease enter the x coordinate ";
+	cin >> xInput;
+	cout << "\nPlease enter the y coordinate ";
+	cin >> yInput;
+	cout << "\nPlease enter the z coordinate ";
+	cin >> zInput;
+	cout << "\nPlease enter the value to place in " << xInput << "," << yInput << "," << zInput << endl;
+	cin >> inputValue;
+	cout << "\nPlease enter the second x coordinate ";
+	cin >> xInput2;
+	cout << "\nPlease enter the second y coordinate ";
+	cin >> yInput2;
+	cout << "\nPlease enter the second z coordinate ";
+	cin >> zInput2;
+	cout << "\nPlease enter the value to place in " << xInput2 << "," << yInput2 << "," << zInput2 << endl;
+	cin >> inputValue2;
+
+	// place the value in the coordinate
+	myArray[xInput][yInput][zInput] = inputValue;
+	myArray[xInput2][yInput2][zInput2] = inputValue2;
+	cout << "\nYou have successfully placed the value " << inputValue << " in coordinate " << xInput << ", " << yInput << ", " << zInput
+		<< " and " << inputValue2 << " in coordinate " << xInput2 << ", " << yInput2 << ", " << zInput2 << endl;
+
+	processThroughArray();
+
+	// indicate end of array processing
+	cout << "\nArray Processed" << endl;
+
+	//math
+	double distance = 0;
+	distance = pow((xInput2 - xInput), 2.0) + pow((yInput2 - yInput), 2.0) + pow((zInput2 - zInput), 2.0);
+	distance = sqrt(distance);
+	cout << "The distance between the coordinates is " << distance << endl;
+
+	searchArray();
+
+	return 0;
+}
+
+void processThroughArray(){
+	// Process through the array
+	for (int x = 0; x < 10; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			for (int z = 0; z < 10; z++){
+				// Display the value of the coordinate
+				cout << "\nCordinate " << x << ", " << y << ", " << z << " value is " << myArray[x][y][z];
+			}
+		}
+	}
+}
+
+void searchArray()
+{
+	bool f = false;
+	int look = 0;
+	int i = 0;
+	cout << "What do you want to look for?" << endl;
+	cin >> look;
+	for (int x = 0; x < 10; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			for (int z = 0; z < 10; z++)
+			{
+				if (myArray[x][y][z] == look)
+				{
+					f = true;
+					if(i == 0)
+					{
+						
+						cout << "Value found at " << x << "," << y << "," << z;
+						i++;
+					}
+					else
+					{
+						cout << " and "<< x << "," << y << "," << z;
+					}
+				}
+
+			}
+		}
+	}
+	if (f == false)
+	{
+		cout << "Value not found.";
+	}
+
+}
