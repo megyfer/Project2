@@ -1,0 +1,61 @@
+// 2DimensionalArrayExp1  
+// This program is part of Project 2
+// As part of your assignment on this program, you will turn the process through the array
+// into a function and add a third dimension
+
+
+#include <iostream>
+#include <cstdlib>	// Needed for rand and srand
+#include <ctime>	// Needed for the time function
+using namespace std;
+
+void processThroughArray();
+int myArray[10][10] = { 0 };
+int main()
+{
+	// estabish array and set all values to 0
+	
+
+	// establish x and y position markers
+	int x = 0;
+	int y = 0;
+
+	// establish input for x and y from the user
+	int xInput = 0;
+	int yInput = 0;
+
+	// variable for value entered
+	int inputValue = 0;
+
+	// Get the user's value and coordinate
+	cout << "\nPlease enter the x coordinate ";
+	cin >> xInput;
+	cout << "\nPlease enter the y coordinate ";
+	cin >> yInput;
+	cout << "\nPlease enter the value to place in " << xInput << "," << yInput << " ";
+	cin >> inputValue;
+
+	// place the value in the coordinate
+	myArray[xInput][yInput] = inputValue;
+	cout << "\nYou have successfully placed the value " << inputValue << " in coordinate" << xInput << ", " << yInput << " ";
+
+	processThroughArray();
+
+	// indicate end of array processing
+	cout << "\nArray Processed" << endl;
+
+
+	return 0;
+}
+
+void processThroughArray(){
+	// Process through the array
+	for (int x = 0; x < 10; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			// Display the value of the coordinate
+			cout << "\nCordinate " << x << ", " << y << " value is " << myArray[x][y];
+		}
+	}
+}
